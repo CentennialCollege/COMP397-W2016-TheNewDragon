@@ -1,19 +1,19 @@
 ﻿/// <reference path = "_reference.ts" />
 
 // global variables
-var canvas:HTMLElement;
-var stage:createjs.Stage;
-var stats:Stats;
+var canvas: HTMLElement;
+var stage: createjs.Stage;
+var stats: Stats;
 
-var currentScene:objects.Scene;
-var scene:number;
+var currentScene: objects.Scene;
+var scene: number;
 
 // Game Scenes
-var menu:scenes.Menu;
-var play:scenes.Play;
-var over:scenes.Over;
+var intro: scenes.Intro;
+var leftCave: scenes.LeftCave;
+var rightCave: scenes.RightCave;
 
-function init():void {
+function init(): void {
     // create a reference the HTML canvas Element
     canvas = document.getElementById("canvas");
     
@@ -33,12 +33,12 @@ function init():void {
     setupStats(); 
     
     // set initial scene
-    scene = config.Scene.MENU;
+    scene = config.Scene.INTRO;
     changeScene();
 }
 
 // Main Game Loop function that handles what happens each "tick" or frame
-function gameLoop(event:createjs.Event):void {
+function gameLoop(event: createjs.Event): void {
     // start collecting stats for this frame
     stats.begin(); 
     
@@ -53,7 +53,7 @@ function gameLoop(event:createjs.Event):void {
 }
 
 // Setup Game Stats
-function setupStats():void {
+function setupStats(): void {
     stats = new Stats();
     stats.setMode(0); // shows fps
     stats.domElement.style.position = "absolute";
@@ -67,26 +67,26 @@ function changeScene(): void {
     
     // Launch various scenes
     switch (scene) {
-        case config.Scene.MENU:
+        case config.Scene.INTRO:
             // show the MENU scene
             stage.removeAllChildren();
-            menu = new scenes.Menu();
-            currentScene = menu;
-            console.log("Starting MENU Scene");
+            intro = new scenes.Intro();
+            currentScene = intro;
+            console.log("Starting INTRO Scene");
             break;
-        case config.Scene.PLAY:
+        case config.Scene.LEFT_CAVE:
             // show the PLAY scene
             stage.removeAllChildren();
-            play = new scenes.Play();
-            currentScene = play;
-            console.log("Starting PLAY Scene");
+            leftCave = new scenes.LeftCave();
+            currentScene = leftCave;
+            console.log("Starting LEFT_CAVE Scene");
             break;
-        case config.Scene.OVER:
+        case config.Scene.RIGHT_CAVE:
             // show the game OVER scene
             stage.removeAllChildren();
-            over = new scenes.Over();
-            currentScene = over;
-            console.log("Starting OVER Scene");
+            rightCave = new scenes.RightCave();
+            currentScene = rightCave;
+            console.log("Starting RIGHT_CAVE Scene");
             break;
     }
 

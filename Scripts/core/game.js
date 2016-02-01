@@ -6,9 +6,9 @@ var stats;
 var currentScene;
 var scene;
 // Game Scenes
-var menu;
-var play;
-var over;
+var intro;
+var leftCave;
+var rightCave;
 function init() {
     // create a reference the HTML canvas Element
     canvas = document.getElementById("canvas");
@@ -23,7 +23,7 @@ function init() {
     // sets up our stats counting workflow
     setupStats();
     // set initial scene
-    scene = config.Scene.MENU;
+    scene = config.Scene.INTRO;
     changeScene();
 }
 // Main Game Loop function that handles what happens each "tick" or frame
@@ -50,26 +50,26 @@ function setupStats() {
 function changeScene() {
     // Launch various scenes
     switch (scene) {
-        case config.Scene.MENU:
+        case config.Scene.INTRO:
             // show the MENU scene
             stage.removeAllChildren();
-            menu = new scenes.Menu();
-            currentScene = menu;
-            console.log("Starting MENU Scene");
+            intro = new scenes.Intro();
+            currentScene = intro;
+            console.log("Starting INTRO Scene");
             break;
-        case config.Scene.PLAY:
+        case config.Scene.LEFT_CAVE:
             // show the PLAY scene
             stage.removeAllChildren();
-            play = new scenes.Play();
-            currentScene = play;
-            console.log("Starting PLAY Scene");
+            leftCave = new scenes.LeftCave();
+            currentScene = leftCave;
+            console.log("Starting LEFT_CAVE Scene");
             break;
-        case config.Scene.OVER:
+        case config.Scene.RIGHT_CAVE:
             // show the game OVER scene
             stage.removeAllChildren();
-            over = new scenes.Over();
-            currentScene = over;
-            console.log("Starting OVER Scene");
+            rightCave = new scenes.RightCave();
+            currentScene = rightCave;
+            console.log("Starting RIGHT_CAVE Scene");
             break;
     }
     console.log(currentScene.numChildren);
