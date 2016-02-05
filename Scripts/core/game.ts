@@ -14,7 +14,7 @@ var intro: scenes.Intro;
 var leftCave: scenes.LeftCave;
 var rightCave: scenes.RightCave;
 
-var assetData = [
+var assetData:objects.Asset[] = [
     {id: "BackButton", src:"../../Assets/images/BackButton.png"},
     {id: "IntroCave", src:"../../Assets/images/IntroCave.png"},
     {id: "LeftCave", src:"../../Assets/images/LeftCave.png"},
@@ -24,7 +24,7 @@ var assetData = [
     {id: "RightCaveButton", src:"../../Assets/images/RightCaveButton.png"},
     {id: "StartButton", src:"../../Assets/images/StartButton.png"},
     {id: "StartOverButton", src:"../../Assets/images/StartOverButton.png"}
-]
+];
 
 function preload() {
     assets = new createjs.LoadQueue();
