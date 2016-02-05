@@ -1,6 +1,7 @@
 ﻿/// <reference path = "_reference.ts" />
 
 // global variables
+var assets: createjs.LoadQueue;
 var canvas: HTMLElement;
 var stage: createjs.Stage;
 var stats: Stats;
@@ -12,6 +13,25 @@ var scene: number;
 var intro: scenes.Intro;
 var leftCave: scenes.LeftCave;
 var rightCave: scenes.RightCave;
+
+var assetData = [
+    {id: "BackButton", src:"../../Assets/images/BackButton.png"},
+    {id: "IntroCave", src:"../../Assets/images/IntroCave.png"},
+    {id: "LeftCave", src:"../../Assets/images/LeftCave.png"},
+    {id: "LeftCaveButton", src:"../../Assets/images/LeftCaveButton.png"},
+    {id: "Nextbutton", src:"../../Assets/images/Nextbutton.png"},
+    {id: "RightCave", src:"../../Assets/images/RightCave.png"},
+    {id: "RightCaveButton", src:"../../Assets/images/RightCaveButton.png"},
+    {id: "StartButton", src:"../../Assets/images/StartButton.png"},
+    {id: "StartOverButton", src:"../../Assets/images/StartOverButton.png"}
+]
+
+function preload() {
+    assets = new createjs.LoadQueue();
+    assets.installPlugin(createjs.Sound);
+    assets.on("complete", init, this);
+    assets.loadManifest(assetData);
+}
 
 function init(): void {
     // create a reference the HTML canvas Element

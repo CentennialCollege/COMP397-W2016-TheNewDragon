@@ -16,7 +16,7 @@ var scenes;
         // Start Method
         RightCave.prototype.start = function () {
             // add LeftCave Image
-            this._rightCaveImage = new createjs.Bitmap("../../Assets/images/RightCave.png");
+            this._rightCaveImage = new createjs.Bitmap(assets.getResult("RightCave"));
             this.addChild(this._rightCaveImage);
             // add the BACK button to the OVER scene
             this._startOverButton = new objects.Button("StartOverButton", config.Screen.CENTER_X, config.Screen.CENTER_Y + 180);

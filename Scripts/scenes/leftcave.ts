@@ -15,7 +15,7 @@ module scenes {
         // Start Method
         public start(): void {
             // add LeftCave Image
-            this._leftCaveImage = new createjs.Bitmap("../../Assets/images/LeftCave.png");
+            this._leftCaveImage = new createjs.Bitmap(assets.getResult("LeftCave"));
             this.addChild(this._leftCaveImage);
 
             // add the BACK button to the OVER scene
